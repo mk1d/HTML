@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once 'services/db.php';
+require_once 'services/auth.php';
+
+if (!isLoggedIn()) {
+    header("Location: index.php");
+}
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header("Location: index.php"); // vagy bárhova szeretnéd irányítani
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -8,6 +23,17 @@
   <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+<nav>
+<?php
+$email = getEmail();
+?>
+<?php if ($email): ?>
+  <span>Bejelentkezve mint, <?= $email ?></span>
+  <form method="post" style="display:inline;">
+        <button class="navb" type="submit" name="logout">Kijelentkezés</button>
+    </form>
+<?php endif; ?>
+</nav>
 <div class="jumbotron text-center" style="background-image: url('./images/front.jpg')">
   <h1>Vaszilijedc.hu</h1>
   <P>Kések, pengék és multi toolok egy helyen</P>
@@ -69,7 +95,7 @@
     </div>
     <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-8 text-center"><a href="index.html" class="big-button btn btn-primary">Vissza a főoldalra</a></div>
+        <div class="col-sm-8 text-center"><a href="main.php" class="big-button btn btn-primary">Vissza a főoldalra</a></div>
         <div class="col-sm-2"></div>
     </div>
 </div>

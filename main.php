@@ -1,3 +1,19 @@
+<?php
+session_start();
+require_once 'services/db.php';
+require_once 'services/auth.php';
+
+if(!isLoggedIn()) {
+  header("Location: index.php");
+}
+
+if (isset($_POST['logout'])) {
+  session_destroy();
+  header("Location: index.php"); // vagy bárhova szeretnéd irányítani
+  exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -8,6 +24,15 @@
   <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+<nav>
+<?php
+$email = getEmail();
+?>
+<?php if ($email): ?>
+  <span>Bejelentkezve mint, <?= $email ?></span>
+  <button class="navb">Kijelentkezés</button>
+<?php endif; ?>
+</nav>
 <div class="jumbotron text-center" style="background-image: url('./images/front.jpg')">
   <h1>Vaszilijedc.hu</h1>
   <P>Kések, pengék és multi toolok egy helyen</P>
@@ -36,7 +61,7 @@
                 <h1>Ha kést szeretnél vásárolni, látogasd meg viszonteladóinkat.</h1>
                 <div class="col-sm-10">
                     <div class="d-flex justify-content-center">
-                        <a href="resellers.html" class="big-button btn btn-primary">Viszonteladók</a>
+                        <a href="resellers.php" class="big-button btn btn-primary">Viszonteladók</a>
                     </div>
                 </div>    
             </div>

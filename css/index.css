@@ -13,6 +13,31 @@
     background-color: rgba(0, 0, 0, 0.5); /* fekete, 50% átlátszóság */
     z-index: 0;
 }
+
+nav {
+    top: 0;
+    position: sticky;
+    background-color: #363636;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 3px;
+    color: white;
+    z-index: 1500;
+    align-items: center;
+}
+
+span {
+    margin: 3px;
+}
+
+.navb {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
+    border-radius: 3px;
+    margin: 3px;
+}
   
 .jumbotron h1, .jumbotron p {
     position: relative;
