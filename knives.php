@@ -55,8 +55,8 @@ $email = getEmail();
         <div class="card h-100">
           <img src="<?= htmlspecialchars($reseller['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($reseller['name']) ?>">
           <div class="card-body">
-            <h5 class="card-title"><?= htmlspecialchars($reseller['elado neve']) ?></h5>
-            <p class="card-text"><?= htmlspecialchars($reseller['valami leiras']) ?></p>
+            <h5 class="card-title"><?= htmlspecialchars($reseller['name']) ?></h5>
+            <p class="card-text"><?= htmlspecialchars($reseller['brand_id']) ?></p>
           </div>
         </div>
       </div>
