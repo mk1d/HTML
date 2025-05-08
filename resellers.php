@@ -9,9 +9,14 @@ if (!isLoggedIn()) {
 
 if (isset($_POST['logout'])) {
     session_destroy();
-    header("Location: index.php"); // vagy bárhova szeretnéd irányítani
+    header("Location: index.php");
     exit();
 }
+
+if (isset($_POST['knives'])) {
+    header("Location: knives.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -30,8 +35,9 @@ $email = getEmail();
 <?php if ($email): ?>
   <span>Bejelentkezve mint, <?= $email ?></span>
   <form method="post" style="display:inline;">
-        <button class="navb" type="submit" name="logout">Kijelentkezés</button>
-    </form>
+  <button class="navb" type="submit" name="knives">Késeink</button>
+  <button class="navb" type="submit" name="logout">Kijelentkezés</button>
+  </form>
 <?php endif; ?>
 </nav>
 <div class="jumbotron text-center" style="background-image: url('./images/front.jpg')">
