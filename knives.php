@@ -48,9 +48,27 @@ $email = getEmail();
 
 <!-- Ide rakosgasd be a kartyakat :) -->
 
+<div class="container">
+  <div class="row">
+    <?php foreach ($resellers as $reseller): ?>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<?= htmlspecialchars($reseller['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($reseller['name']) ?>">
+          <div class="card-body">
+            <h5 class="card-title"><?= htmlspecialchars($reseller['elado neve']) ?></h5>
+            <p class="card-text"><?= htmlspecialchars($reseller['valami leiras']) ?></p>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<!-- xxxx -->
+
 <br>
   <footer>
-    <p>Készitő: Kullai Marcell<br>
+    <p>Készitő: Kullai Marcell, Baczúr Martin<br>
     <a href="https://github.com/mk1d">Github</a></p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
