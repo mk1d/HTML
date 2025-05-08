@@ -113,7 +113,7 @@ $email = getEmail();
 
 <br>
   <footer>
-    <p>Készitő: Kullai Marcell<br>
+    <p>Készitő: Kullai Marcell, Baczúr Martin<br>
     <a href="https://github.com/mk1d">Github</a></p>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

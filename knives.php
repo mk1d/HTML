@@ -87,6 +87,24 @@ $email = getEmail();
         </div>
   </div>
 
+<div class="container">
+  <div class="row">
+    <?php foreach ($resellers as $reseller): ?>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="<?= htmlspecialchars($reseller['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($reseller['name']) ?>">
+          <div class="card-body">
+            <h5 class="card-title"><?= htmlspecialchars($reseller['name']) ?></h5>
+            <p class="card-text"><?= htmlspecialchars($reseller['brand_id']) ?></p>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<!-- xxxx -->
+
 <br>
   <footer>
     <p>Készitő: Kullai Marcell, Baczúr Martin<br>
