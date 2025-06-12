@@ -1,14 +1,23 @@
 <?php
-function isLoggedIn(): bool {
+function isLoggedIn(): bool
+{
     return isset($_SESSION['user_id']);
 }
-function getEmail(): mixed {
+
+function getEmail(): mixed
+{
     return $_SESSION['email'] ?? null;
 }
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
 
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+function getFullname(): mixed
+{
+    if (isset($_SESSION['first_name'], $_SESSION['last_name'])) {
+        return $_SESSION['first_name'] . " " . $_SESSION['last_name'];
+    }
+    return null;
+}
+
+function getUserID(): mixed
+{
+    return $_SESSION['user_id'] ?? null;
 }
