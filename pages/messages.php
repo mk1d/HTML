@@ -27,43 +27,47 @@ $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </header>
 
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Felhasználó</th>
-                            <th>Név</th>
-                            <th>Üzenet</th>
-                            <th>Dátum</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($messages as $index => $msg): ?>
+            <div class="col-12 col-md-10 col-lg-8">
+
+                <!-- Make table responsive on small screens -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle text-nowrap">
+                        <thead class="table-light">
                             <tr>
-                                <td><?= $index + 1 ?></td>
-                                <td>
-                                    <?php
-                                    if ($msg['user_id'] === null) {
-                                        echo "Vendég";
-                                    } else {
-                                        // Lekérdezzük a felhasználó nevét
-                                        $userStmt = $db->prepare("SELECT first_name, last_name FROM user WHERE id = ?");
-                                        $userStmt->execute([$msg['user_id']]);
-                                        $user = $userStmt->fetch(PDO::FETCH_ASSOC);
-                                        echo $user
-                                            ? htmlspecialchars($user['first_name']) . ' ' . htmlspecialchars($user['last_name'])
-                                            : "Ismeretlen felhasználó";
-                                    }
-                                    ?>
-                                </td>
-                                <td><?= htmlspecialchars($msg['name']) ?></td>
-                                <td><?= nl2br(htmlspecialchars($msg['message'])) ?></td>
-                                <td><?= htmlspecialchars($msg['created_at']) ?></td>
+                                <th>#</th>
+                                <th>Felhasználó</th>
+                                <th>Név</th>
+                                <th>Üzenet</th>
+                                <th>Dátum</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($messages as $index => $msg): ?>
+                                <tr>
+                                    <td><?= $index + 1 ?></td>
+                                    <td>
+                                        <?php
+                                        if ($msg['user_id'] === null) {
+                                            echo "Vendég";
+                                        } else {
+                                            $userStmt = $db->prepare("SELECT first_name, last_name FROM user WHERE id = ?");
+                                            $userStmt->execute([$msg['user_id']]);
+                                            $user = $userStmt->fetch(PDO::FETCH_ASSOC);
+                                            echo $user
+                                                ? htmlspecialchars($user['first_name']) . ' ' . htmlspecialchars($user['last_name'])
+                                                : "Ismeretlen felhasználó";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?= htmlspecialchars($msg['name']) ?></td>
+                                    <td><?= nl2br(htmlspecialchars($msg['message'])) ?></td>
+                                    <td><?= htmlspecialchars($msg['created_at']) ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
